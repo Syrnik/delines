@@ -186,8 +186,6 @@ class delinesShipping extends waShipping
             }
         }
 
-        waLog::log("Door:" . print_r($rates_to_door, true), 'dl.log');
-        waLog::log("Term:" . print_r($rates_to_terminal, true), 'dl.log');
         if (!$rates_to_door && !$rates_to_terminal) {
             throw new waException('Доставка по указанному адресу невозможна4');
         }
