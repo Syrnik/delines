@@ -27,7 +27,7 @@ class delinesShipping extends waShipping
      */
     public function allowedAddress()
     {
-        return array(array('country'=>'rus'));
+        return array(array('country' => 'rus'));
     }
 
     /**
@@ -106,7 +106,10 @@ class delinesShipping extends waShipping
         $city_name = $this->getAddress('city');
 
         if (!($region_code && $city_name) && !$postal_index) {
-            throw new waException('Для расчета стоимости доставки укажите регион и город, либо почтовый индекс');
+            return array(
+                'rate'    => null,
+                'comment' => 'Для расчета стоимости доставки укажите регион и город, либо почтовый индекс'
+            );
         }
 
         $city_code = null;
