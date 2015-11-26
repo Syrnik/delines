@@ -48,6 +48,15 @@ return array(
         ),
         'value'        => array('door', 'terminal')
     ),
+    'arrival_order'      => array(
+        'value'        => 'courier-first',
+        'title'        => 'Очередность вариантов доставки',
+        'description'  =>
+            'Очередность показа вариантов доставки курьерская или до терминала. Если для города доступны и курьерская ' .
+            'доставка, и терминалы, то здесь можно указать какой вариант будет первым',
+        'control_type' => waHtmlControl::SELECT,
+        'options'      => array('courier-first' => 'Сначала курьер', 'store-first' => 'Сначала терминалы'),
+    ),
     'limit_hour'         => array(
         'value'        => 18,
         'title'        => 'Час переноса отгрузки',

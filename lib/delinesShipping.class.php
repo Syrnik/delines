@@ -3,6 +3,7 @@
 /**
  * @property string $app_key
  * @property array $arrival
+ * @property string $arrival_order
  * @property string $cost_rounding_rule
  * @property bool $cost_round_up_only
  * @property string $derival_city
@@ -72,6 +73,7 @@ class delinesShipping extends waShipping
      */
     public function tracking($tracking_id = null)
     {
+        return 'Отслеживание отправления: <a href="http://www.dellin.ru/tracker/" target="_blank"> http://www.dellin.ru/tracker/</a>';
         if (!$tracking_id) {
             return null;
         }
@@ -193,7 +195,13 @@ class delinesShipping extends waShipping
             throw new waException('Доставка по указанному адресу невозможна4');
         }
 
-        return $rates_to_door + $rates_to_terminal;
+        if($this->arrival_order == 'courier-first') {
+            $rates = array_merge($rates_to_door, $rates_to_terminal);
+        } else {
+            $rates = array_merge($rates_to_terminal, $rates_to_door);
+        }
+
+        return $rates;
 
     }
 
